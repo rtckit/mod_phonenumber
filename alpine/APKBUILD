@@ -1,0 +1,18 @@
+# Contributor: rtckit <hello@rtckit.io>
+# Maintainer: rtckit <hello@rtckit.io>
+pkgname=freeswitch-phonenumber
+pkgver=1.0.0
+pkgrel=0
+pkgdesc="libphonenumber bindings for FreeSWITCH"
+url="https://rtckit.io/mod-phonenumber/"
+arch="_ARCH_"
+license="MPL 1.1"
+depends="freeswitch libphonenumber"
+options="!check"
+
+package() {
+  mkdir -p $pkgdir/usr/lib/freeswitch/mod
+  mkdir -p $pkgdir/etc/freeswitch/autoload_configs
+  cp etc/freeswitch/autoload_configs/phonenumber.conf.xml  $pkgdir/etc/freeswitch/autoload_configs
+  cp usr/lib/freeswitch/mod/mod_phonenumber.so $pkgdir/usr/lib/freeswitch/mod
+}

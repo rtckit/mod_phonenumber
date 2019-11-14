@@ -1,0 +1,8 @@
+Package: freeswitch-mod-phonenumber
+Version: _MOD_VERSION_
+Architecture: _ARCH_
+Section: base
+Priority: standard
+Depends: freeswitch (>= _FREESWITCH_VERSION_), libphonenumber7, libicu63
+Maintainer: rtckit <hello@rtckit.io>
+Description: libphonenumber bindings for FreeSWITCH

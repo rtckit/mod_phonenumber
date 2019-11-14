@@ -1,0 +1,59 @@
+<configuration name="phonenumber.conf" description="mod_phonenumber configuration">
+  <!-- Default parameters for mod_phonenumbers. These values are used whenever
+       they are not explicitly set up (when invoked via the dialplan application,
+       the API interface or through hooks.-->
+  <settings>
+    <!-- Two character region code; this is used when the input number is not
+         written in international format. -->
+    <param name="default_region" value="US"/>
+
+    <!-- Default representation for formatting actions when a format is not
+         explicitly set. Must be one of the following:
+         * E164
+         * INTERNATIONAL
+         * NATIONAL
+         * RFC3966 -->
+    <param name="format" value="E164"/>
+
+    <!-- Default locale used by get_description_for_number when a locale is
+         not explicitly set. Must be formatted as a language/region tag
+         combination, e.g. es_MX, fr_BE, en_GB etc. -->
+    <param name="locale" value="en_US"/>
+
+    <!-- Default calling_from region code for format_out_of_country_calling_number
+         when one is not explicitly set. Use two character code (e.g. IT, DE,
+         CA etc.). -->
+    <param name="calling_from" value="US"/>
+  </settings>
+
+  <!-- mod_phonenumber can be engaged automatically for new channels through
+       hooks. Each hook instance can filter the channels it operates on by
+       direction and/or context and will execute a predefined list of actions,
+       with its own default_region, format, locale and calling_from parameters. -->
+  <hooks>
+    <!-- <hook> -->
+      <!-- Directional filter, must be one of inbound, outbound or all. If
+           not present, it defaults to all (i.e. no filtering). -->
+      <!-- <param name="direction" value="inbound"/> -->
+
+      <!-- Context filter, it refers to the FreeSWITCH context in which the
+           channel is created. If not present, no filtering is performed. -->
+      <!-- <param name="context" value="default"/> -->
+
+      <!-- Hook's scope, can be set to destination, caller or all. If not
+           present, it defaults to all (i.e. the actions will be executed
+           against both the destination and the caller number). -->
+      <!-- <param name="scope" value="destination"/> -->
+
+      <!-- Comma separated list of actions to be executed. -->
+      <!-- <param name="actions" value="get_region_code,get_description_for_number"/> -->
+
+      <!-- Hook specific parameters. When not set, the defaults defined at the
+           top of this file are being used instead. -->
+      <!-- <param name="default_region" value="US"/> -->
+      <!-- <param name="format" value="E164"/> -->
+      <!-- <param name="locale" value="en_US"/> -->
+      <!-- <param name="calling_from" value="US"/> -->
+    <!-- </hook> -->
+  </hooks>
+</configuration>

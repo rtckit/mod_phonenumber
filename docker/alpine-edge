@@ -1,0 +1,12 @@
+FROM alpine:edge
+
+# Install build dependencies, mod_phonenumber prerequisites and a vanilla FreeSWITCH instance
+RUN apk update
+RUN apk add bash g++ make alpine-sdk libphonenumber-dev freeswitch-dev
+
+# Build mod_phonenumber
+COPY . /usr/src/mod_phonenumber
+WORKDIR /usr/src/mod_phonenumber
+RUN make "BUILD=dist" && make install
+
+CMD ["freeswitch", "-nonat"]
