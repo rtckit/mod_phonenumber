@@ -1,7 +1,7 @@
 # mod_phonenumber
 > Exposes [libphonenumber](https://github.com/googlei18n/libphonenumber) to [FreeSWITCH](https://github.com/signalwire/freeswitch)
 
-![Version](https://img.shields.io/badge/version-v1.0.0-green) ![License](https://img.shields.io/badge/license-MIT-blue)
+[![Build Status](https://travis-ci.org/rtckit/mod_phonenumber.svg?branch=master)](https://travis-ci.org/rtckit/mod_phonenumber) ![Version](https://img.shields.io/badge/version-v1.0.0-green) ![License](https://img.shields.io/badge/license-MIT-blue)
 
 ## Installation
 
