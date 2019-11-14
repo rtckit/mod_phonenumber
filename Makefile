@@ -102,5 +102,6 @@ dist-deb-%:
 	docker create --name mod_$(NAME)-$* mod_$(NAME):$*
 	docker cp mod_$(NAME)-$*:/usr/src/mod_$(NAME)/freeswitch-mod-$(NAME).deb dist/$*/freeswitch-mod-$(NAME)_$(VERSION)_$(ARCH).deb
 	docker rm mod_$(NAME)-$*
+	dpkg --info dist/$*/freeswitch-mod-$(NAME)_$(VERSION)_$(ARCH).deb
 
 dist: dist-deb-debian-buster

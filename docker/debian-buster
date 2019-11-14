@@ -21,6 +21,6 @@ RUN rm -rf /etc/freeswitch/sip_profiles/*ipv6* && \
 # Build mod_phonenumber
 COPY . /usr/src/mod_phonenumber
 WORKDIR /usr/src/mod_phonenumber
-RUN make "BUILD=dist" && make install && make deb
+RUN make "BUILD=dist" && make install && make deb && make check
 
 CMD ["freeswitch", "-nonat"]

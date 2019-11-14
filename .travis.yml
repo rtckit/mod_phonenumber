@@ -1,26 +1,6 @@
 # Configuration
-language: cpp
 os: linux
-compiler: gcc
-
-# Add FreeSWITCH official repository
-before_install:
-  - apt-get update && apt-get install -yq gnupg2 wget lsb-release
-  - wget -O - https://files.freeswitch.org/repo/deb/debian-release/fsstretch-archive-keyring.asc | apt-key add -
-  - echo "deb http://files.freeswitch.org/repo/deb/debian-release/ `lsb_release -sc` main" > /etc/apt/sources.list.d/freeswitch.list
-  - echo "deb-src http://files.freeswitch.org/repo/deb/debian-release/ `lsb_release -sc` main" >> /etc/apt/sources.list.d/freeswitch.list
-  - apt-get update
-
-# Install build dependencies, mod_phonenumber prerequisites and a vanilla FreeSWITCH instance
-# Also, remove IPv6 profiles and enable ESL on IPv4
-install:
-  - apt-get install -y build-essential pkg-config libicu-dev libphonenumber-dev libfreeswitch-dev freeswitch-meta-vanilla
-  - rm -rf /etc/freeswitch/sip_profiles/*ipv6*
-  - sed -i 's/::/0/' /etc/freeswitch/autoload_configs/event_socket.conf.xml
 
 script:
-  - g++ main.cpp -std=c++17 -o travis_gcc_cpp17
-  - make "BUILD=dist"
-  - make install
-  - make deb
-  - make check
+  - make create-docker-debian-buster
+  - make dist-deb-debian-buster
